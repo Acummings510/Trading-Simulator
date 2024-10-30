@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Simulator</title>
+</head>
+<body>
+    <h1>Trading Simulator</h1>
+    <form method="POST">
+        <label for="capital">Enter initial capital:</label>
+        <input type="text" id="capital" name="capital" required><br>
+
+        <label for="days">Enter the number of trading days:</label>
+        <input type="text" id="days" name="days" required><br>
+
+        <label for="win_rate">Enter win rate (as a percentage):</label>
+        <input type="text" id="win_rate" name="win_rate" required><br>
+
+        <input type="submit" value="Start Simulation">
+    </form>
+
+    {% if results %}
+        <h2>Results:</h2>
+        <div>
+            {% for result in results %}
+                {{ result | safe }}
+            {% endfor %}
+        </div>
+        <p>{{ final_capital | safe }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
